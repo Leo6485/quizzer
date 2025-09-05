@@ -44,3 +44,38 @@
 .option:hover {
     transform: scale(1.1);
 }
+
+.bottomContainer {
+    display: flex;
+    width: 100%;
+    margin: 1px solid black;
+    justify-content: end;
+    gap: 10px;
+    padding: 10px;
+    align-items: center;
+    flex-direction: row;
+}
+
+.confirmButton {
+    color: #FFFFFF;
+    border: none;
+    background-color: blue;
+}
+
+.explainThis {
+    background-color: 00000000;
+    color: blue;
+    border: 1px solid blue;
+    background-color: #FFFFFF;
+}
+
+.confirmButton, .explainThis {
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    transition: 0.1s all ease-in-out;
+}
+
+.confirmButton:hover, .explainThis:hover {
+    transform: scale(1.1);
+}
