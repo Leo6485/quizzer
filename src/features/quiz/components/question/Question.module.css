@@ -1,0 +1,27 @@
+.questionCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid gray;
+    width: 80%;
+    margin: 10px auto;
+}
+
+.options {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.option {
+    width: 100%;
+    border: 1px solid gray;
+    padding: 5px;
+    border-radius: 10px;
+    text-decoration: none;
+    list-style: none;
+    color: black;
+}
