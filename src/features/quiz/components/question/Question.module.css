@@ -3,46 +3,109 @@
     flex-direction: column;
     justify-content: center;
     align-items: start;
-    border: 1px solid #DDDDDD;
-    width: 80%;
-    margin: 10px auto;
+    width: 850px;
+    max-width: 100%;
+    margin: 20px auto;
     border-radius: 10px;
-    background-color: #FFFFFF;
+    background-color: #F0F0F0;
+    color: #202020;
+    box-shadow: #00001050 5px 5px 20px;
+}
+
+@media (max-width: 600px) {
+    .questionCard {
+        box-shadow: none;
+        border-radius: 0;
+        margin: 2px auto;
+    }
+}
+.questionCardExplain {
+    position: fixed;
+    overflow-y: scroll;
+    top: 0;
+    z-index: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 100dvw;
+    height: 100dvh;
+    background-color: #F0F0F0;
     color: #202020;
 }
 
 .question {
     box-sizing: border-box;
-    background-color: #EEEEEE;
-    border-radius: 10px 10px 0 0;
-    width: 100%;
+    width: 90%;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 25px;
-    margin: 0;
+    margin: 0 auto;
+    border-bottom: 1px solid #E0E0E0;
+    font-size: 1.2rem;
 }
 .options {
-    margin: 20px 50px;
+    width: 100%;
+    margin: 25px 0;
     display: flex;
     justify-content: center;
-    align-items: start;
+    align-items: center;
     flex-direction: column;
     gap: 10px;
 }
 
+.optionContainer {
+    display: flex;
+    justify-content: start;
+    width: 80%;
+}
+
 .option {
     width: 100%;
-    border: 1px solid #DDDDDD;
-    padding: 5px 25px;
+    background-color: #E0E0E0;
+    padding: 10px 25px;
     border-radius: 5px;
     text-decoration: none;
     list-style: none;
+    border: 1px solid #00000000;
     transition: 0.1s all ease-in-out;
+}
+
+
+.optionCheckBox {
+    display: none;
 }
 
 .option:hover {
     transform: scale(1.1);
+    border: 1px solid #2050F0;
+}
+
+.optionCorrect, .optionWrong {
+    width: 100%;
+    padding: 10px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    list-style: none;
+    border: 1px solid #00000000;
+}
+.optionCorrect {
+    background-color: green;
+}
+.optionWrong {
+    background-color: red;
+}
+.optionCheckBox:checked + .option {
+    background-color: #2050F0;
+    color: #F0F0F0;
+}
+
+.explanationContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .bottomContainer {
@@ -50,8 +113,9 @@
     width: 100%;
     margin: 1px solid black;
     justify-content: end;
-    gap: 10px;
-    padding: 10px;
+    gap: 20px;
+    height: 50px;
+    padding: 0 20px 10px 20px;
     align-items: center;
     flex-direction: row;
 }
@@ -59,14 +123,14 @@
 .confirmButton {
     color: #FFFFFF;
     border: none;
-    background-color: blue;
+    background-color: #2050F0;
 }
 
 .explainThis {
     background-color: 00000000;
-    color: blue;
-    border: 1px solid blue;
-    background-color: #FFFFFF;
+    color: #2050F0;
+    border: 2px solid #2050F0;
+    background-color: #00000000;
 }
 
 .confirmButton, .explainThis {
@@ -78,4 +142,7 @@
 
 .confirmButton:hover, .explainThis:hover {
     transform: scale(1.1);
+    color: #FFFFFF;
+    border: none;
+    background-color: #2050F0;
 }
