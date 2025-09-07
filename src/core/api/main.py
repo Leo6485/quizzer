@@ -9,10 +9,10 @@ import uvicorn
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Permite solicitações do seu frontend
+    allow_origins=["*"],
     allow_credentials=True,
-    allow_methods=["*"],  # Permite todos os métodos HTTP (GET, POST, etc.)
-    allow_headers=["*"],  # Permite todos os cabeçalhos
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 class Quiz:
     data: list[dict]
@@ -20,7 +20,7 @@ class Quiz:
 @app.get("/quiz")
 def get_quiz(msg: str):
     quiz = gen_quiz(msg)
-    return quiz
+    return quiz, 200
 
 @app.get("/quiz_")
 def get_quiz_(msg: str):

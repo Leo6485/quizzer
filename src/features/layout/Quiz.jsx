@@ -10,9 +10,13 @@ function Quiz() {
 
     function get_quiz(msg) {
         setGeneratingQuiz(true)
-        fetch(`http://localhost:8000/quiz?msg=${msg}`)
+        fetch(`http://192.168.3.165:8000/quiz_?msg=${msg}`)
         .then((response) => response.json())
         .then((data) => {setQuestions(data)})
+        .catch((error) => {
+            console.error('Error:', error);
+            setGeneratingQuiz(false)
+        });
     }
 
     useEffect(() => {
@@ -21,10 +25,11 @@ function Quiz() {
             setGeneratingQuiz(false)
         }
     }, [questions])
+
     return (
         <div>
             {questions.length ?
-            <Question key={questions[currentIdx].id} question={questions[currentIdx]} setIdx={setCurrentIdx} idx={currentIdx} lastIdx={lastIdx}></Question>
+            <Question questions={questions} setIdx={setCurrentIdx} idx={currentIdx} lastIdx={lastIdx}></Question>
             :
             <Chat send={get_quiz} generatingQuiz={generatingQuiz}></Chat>
             }
