@@ -10,7 +10,7 @@ function Quiz() {
 
     function get_quiz(msg) {
         setGeneratingQuiz(true)
-        fetch(`http://192.168.3.165:8000/api/quiz?msg=${msg}`)
+        fetch(`/api/quiz?msg=${msg}`)
         .then((response) => response.json())
         .then((data) => {setQuestions(data)})
         .catch((error) => {
