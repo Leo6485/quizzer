@@ -1,7 +1,3 @@
-# Quizzer
-
-Quizzer é um projeto React para quizzes interativos, com backend Python para integração com a API Gemini.
-
 ## Requisitos
 
 - Node.js (>= 18)
