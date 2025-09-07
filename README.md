@@ -37,13 +37,13 @@
     pip install -r requirements.txt
     ```
 
-3. Configure sua chave da API Gemini:
+3. Configurar a chave API do Gemini:
     ```sh
     export GEMINI_API="SUA_API_TOKEN"
     ```
 - Para Windows, use: `set GEMINI_API=SUA_API_TOKEN`
 
-4. Inicie o servidor backend:
+4. Inicie o servidor:
     ```sh
     python main.py
     ```
@@ -56,11 +56,12 @@
 
 ```
 quizzer/
-├── api/                # Backend Python (Gemini API)
+├── api/
 │   ├── main.py
 │   └── requirements.txt
+│   └── ...
 ├── public/
-├── src/                # Frontend React
+├── src/
 │   ├── App.js
 │   └── ...
 ├── package.json
