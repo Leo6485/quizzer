@@ -27,21 +27,21 @@
 
 ### Backend (API Gemini)
 
-1. Acesse a pasta da API:
+
+1. Configurar a chave API do Gemini:
+    ```sh
+    echo "GEMINI_API=SUA_API_TOKEN" > .env
+    ```
+
+2. Acesse a pasta da API:
     ```sh
     cd api
     ```
 
-2. Instale as dependências Python:
+3. Instale as dependências Python:
     ```sh
     pip install -r requirements.txt
     ```
-
-3. Configurar a chave API do Gemini:
-    ```sh
-    export GEMINI_API="SUA_API_TOKEN"
-    ```
-- Para Windows, use: `set GEMINI_API=SUA_API_TOKEN`
 
 4. Inicie o servidor:
     ```sh
