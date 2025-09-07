@@ -20,7 +20,7 @@ class Quiz:
 @app.get("/quiz")
 def get_quiz(msg: str):
     quiz = gen_quiz(msg)
-    return quiz, 200
+    return quiz
 
 @app.get("/quiz_")
 def get_quiz_(msg: str):

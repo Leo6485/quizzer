@@ -61,8 +61,8 @@ function Question({ questions, setIdx, idx, lastIdx }) {
 
             {   // Explain
                 explainState && <div className={styles.explanationContainer}>
-                    <p className={styles.explicationTitle}>Explicação:</p>
-                    <p className={styles.explicationText}>{question.explanation}</p>
+                    <p className={styles.explanationTitle}>Explicação:</p>
+                    <p className={styles.explanationText}>{question.explanation}</p>
                 </div>
             }
 
