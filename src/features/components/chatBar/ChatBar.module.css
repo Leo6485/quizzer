@@ -46,4 +46,10 @@
     border: 1px solid #FFFFFFA0;
     border-radius: 20px;
     background-color: #A0A0A0A0;
+    cursor: pointer;
+}
+
+.sendButton:hover {
+    background-color: #FFFFFFC0;
+    color: #505050;
 }
