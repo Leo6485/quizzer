@@ -1,0 +1,103 @@
+import json
+import requests
+from random import shuffle
+from os import getenv
+from dotenv import load_dotenv
+
+URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent"
+load_dotenv("../../../.env")
+API_KEY = getenv("GEMINI_API")
+
+def send_with_history(prompt, history):
+    history.append({"role": "user", "parts": [{"text": prompt}]})
+    data = {"contents": history}
+    response = requests.post(URL, params={"key": API_KEY}, json=data)
+    resp_json = response.json()
+
+    try:
+        text = resp_json["candidates"][0]["content"]["parts"][0]["text"]
+
+        history.append({
+            "role": "model",
+            "parts": [{"text": text}]
+        })
+
+        return text
+
+    except Exception as e:
+        return f"Erro na resposta: {json.dumps(resp_json, indent=2, ensure_ascii=False)}"
+
+def gen_quiz(msg):
+    global prompt
+    headers = {"Content-Type": "application/json"}
+    data = {
+        "contents": [
+            {"role": "user", "parts": [{"text": prompt + msg}]}
+        ],
+        "generationConfig": {
+            "response_mime_type": "application/json",
+            "response_schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "question": {"type": "string"},
+                        "id": {"type": "integer"},
+                        "difficult": {"type": "string"},
+                        "options": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {"type": "integer"},
+                                    "text": {"type": "string"}
+                                },
+                                "required": ["id", "text"]
+                            }
+                        },
+                        "solution": {"type": "integer"},
+                        "explanation": {"type": "string"}
+                    },
+                    "required": ["question", "id", "options", "solution", "explanation"]
+                }
+            }
+        }
+    }
+
+    response = requests.post(URL, params={"key": API_KEY}, headers=headers, json=data)
+    resp_json = response.json()
+
+    try:
+        text = resp_json["candidates"][0]["content"]["parts"][0]["text"]
+        json_ = json.loads(text)
+        for q in json_:
+            shuffle(q["options"])
+        
+        return json_
+
+    except Exception as e:
+        return {"error": str(e), "raw": resp_json}
+
+
+prompt = """Você deverá responder em forma de json, seu objetivo é gerar questões para um quiz
+siga o seguinte formato
+
+[{
+question: "Qual a capital do Brasil?",
+id: 1,
+difficult: "easy", # easy, medium, hard, not applied
+options: [
+    {"id": 1,
+    "text": "Brasília"
+    },
+    {"id": 2,
+    ...},
+    ...
+]
+solution: 1
+explanation: "medium explanation about the answer"
+},
+...
+]
+Todas as respostas devem ter este formato, incluindo 4 opções
+O usuário solicitou: """

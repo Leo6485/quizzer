@@ -1,11 +1,10 @@
 import { Routes, Route } from "react-router-dom"
-import Quiz from "../features/quiz/Quiz"
+import Quiz from "../features/layout/Quiz"
 
 function AppRoutes() {
     return (
         <Routes>
-            <Route path="/quiz" element={<Quiz/>}/>
-            <Route path="/home" element={<div></div>}/>
+            <Route path="/" element={<Quiz/>}/>
         </Routes>
     )
 }
