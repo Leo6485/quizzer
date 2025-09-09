@@ -1,9 +1,12 @@
+Geração de quizzes interativa por meio da API do Gemini
+
 ## Requisitos
 
 - Node.js (>= 18)
 - npm
 - Python (>= 3.8)
 - pip
+- API key do Gemini
 
 ## Instalação
 
@@ -30,7 +33,7 @@
 
 1. Configurar a chave API do Gemini:
     ```sh
-    echo "GEMINI_API=SUA_API_TOKEN" > .env
+    echo "GEMINI_API=SUA_API_KEY" > .env
     ```
 
 2. Acesse a pasta da API:
