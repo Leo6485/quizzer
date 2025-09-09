@@ -10,6 +10,7 @@ function Base() {
     const [file, setFile] = useState(null)
 
     function get_quiz(msg) {
+        if (generatingQuiz) return;
         setGeneratingQuiz(true)
 
         if (file) {
@@ -20,7 +21,15 @@ function Base() {
                 method: 'POST',
                 body: formData,
             })
-            .then((response) => response.json())
+            .then((response) => {
+                if (response.status === 429) {
+                    setGeneratingQuiz(false)
+                    alert("Erro: limite excedido, tente novamente mais tarde.")
+                } else {
+                    return response.json()
+                }
+            }
+            )
             .then((data) => {setQuestions(data)})
             .catch((error) => {
                 console.error('Error:', error);
@@ -31,7 +40,14 @@ function Base() {
         }
 
         fetch(`/api/quiz?msg=${msg}`)
-        .then((response) => response.json())
+        .then((response) => {
+                if (response.status === 429) {
+                    setGeneratingQuiz(false)
+                    alert("Erro: limite excedido, tente novamente mais tarde.")
+                } else {
+                    return response.json()
+                }
+            })
         .then((data) => {setQuestions(data)})
         .catch((error) => {
             console.error('Error:', error);
