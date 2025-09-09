@@ -1,14 +1,22 @@
 import styles from "./Question.module.css"
 
-function Question({ question, setSelection, selection, confirmed }) {
+function Question({ question, setSelection, selection, confirmed, count}) {
     return (
             <>
             <div className={styles.question}>
+
+                <div className={styles.topContainer}>
+                    <p className={styles.difficultyTextPrev}>Dificuldade: </p>            
+                    <p className={styles.difficultyText} style={{ color: question.difficulty === "easy" ? "green" : question.difficulty.toLowerCase() === "medium" ? "orange" : "red" }}>{question.difficulty.toLowerCase()}</p>
+                    <div className={styles.timerContainer}>
+                        <p className={styles.timer}>{count}</p>
+                    </div>
+                </div>
                 <p className={styles.questionTitle}>Questão {question.id}</p>
                 <line />
                 <p>{question.question}</p>
-            </div>
 
+            </div>
 
             <ul className={styles.options}>
                 {question.options.map((i) =>

@@ -109,3 +109,35 @@ line {
     background-color: #4763bd;
     color: #F0F0F0;
 }
+
+.topContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.timerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 20px 0 auto;
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #7a1593;
+    border-radius: 50%;
+}
+
+.difficultyTextPrev {
+    font-size: 1.0rem;
+    font-weight: bold;
+    margin: 0 0 0 20px;
+    color: #E0E0E0;
+}
+
+.difficultyText {
+    font-size: 1.0rem;
+    font-weight: bold;
+    margin: 0 10px;
+    color: green;
+}

@@ -1,7 +1,7 @@
 import styles from "./Quiz.module.css"
 import Header from "../../components/header/Header"
 import ExplanationCard from "../../components/explanationCard/ExplanationCard";
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Question from "../../components/question/Question";
 
 
@@ -12,6 +12,23 @@ function Quiz({ questions, setIdx, idx, lastIdx }) {
     const [question, setQuestion] = useState(questions[idx]);
     const [isEnd, setIsEnd] = useState(false);
     const [acertos, setAcertos] = useState(0);
+    const [count, setCount] = useState(question.time);
+    
+    useEffect(() => {
+        setCount(question.time);
+        const interval = setInterval(() => {
+            setCount(prev => {
+                if (prev === 0 || confirmed) {
+                    clearInterval(interval);
+                    setConfirmed(true);
+                    return 0;
+                }
+                return prev - 1;
+            });
+        }, 1000);
+        return () => clearInterval(interval);
+    }, [question]);
+
 
     function toggleExplainState() {
         setExplainState(!explainState)
@@ -50,7 +67,7 @@ function Quiz({ questions, setIdx, idx, lastIdx }) {
             :
             
             <>
-            <Question question={question} setSelection={setSelection} selection={selection} confirmed={confirmed}></Question>
+            <Question question={question} setSelection={setSelection} selection={selection} confirmed={confirmed} setConfirmed={setConfirmed} count={count}></Question>
 
 
             <div className={styles.bottomContainer}>

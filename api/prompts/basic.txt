@@ -5,7 +5,7 @@ siga o seguinte formato abaixo:
     {
     question: "Qual a capital do Brasil?",
     id: 1,
-    difficult: "easy", # easy, medium, hard, not applied
+    difficulty: "easy", # easy, medium, hard, not applied
     time: 30, # int
 
     options: [

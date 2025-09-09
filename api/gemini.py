@@ -43,7 +43,7 @@ def gen_quiz(msg):
                     "properties": {
                         "question": {"type": "string"},
                         "id": {"type": "integer"},
-                        "difficult": {"type": "string"},
+                        "difficulty": {"type": "string"},
                         "time": {"type": "integer"},
                         "options": {
                             "type": "array",
@@ -107,7 +107,7 @@ def gen_quiz_file(file: UploadFile, msg="", content=None):
                     "properties": {
                         "question": {"type": "string"},
                         "id": {"type": "integer"},
-                        "difficult": {"type": "string"},
+                        "difficulty": {"type": "string"},
                         "time": {"type": "integer"},
                         "options": {
                             "type": "array",
