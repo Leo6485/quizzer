@@ -44,6 +44,7 @@ def gen_quiz(msg):
                         "question": {"type": "string"},
                         "id": {"type": "integer"},
                         "difficult": {"type": "string"},
+                        "time": {"type": "integer"},
                         "options": {
                             "type": "array",
                             "items": {
@@ -79,25 +80,5 @@ def gen_quiz(msg):
         return {"error": str(e), "raw": resp_json}
 
 
-prompt = """Você deverá responder em forma de json, seu objetivo é gerar questões para um quiz
-siga o seguinte formato
-
-[{
-question: "Qual a capital do Brasil?",
-id: 1,
-difficult: "easy", # easy, medium, hard, not applied
-options: [
-    {"id": 1,
-    "text": "Brasília"
-    },
-    {"id": 2,
-    ...},
-    ...
-]
-solution: 1
-explanation: "medium explanation about the answer"
-},
-...
-]
-Todas as respostas devem ter este formato, incluindo 4 opções
-O usuário solicitou: """
+with open("prompts/basic.txt", "r", encoding="utf-8") as f:
+    prompt = f.read()

@@ -1,8 +1,8 @@
-import Question from "../pages/question/Question"
+import Question from "../pages/quiz/Quiz"
 import Chat from "../pages/chat/Chat";
 import { useState, useEffect} from "react"
 
-function Quiz() {
+function Base() {
     const [lastIdx, setLastIdx] = useState(-1);
     const [currentIdx, setCurrentIdx] = useState(0);
     const [questions, setQuestions] = useState([]);
@@ -37,4 +37,4 @@ function Quiz() {
     )
 }
 
-export default Quiz;
+export default Base;

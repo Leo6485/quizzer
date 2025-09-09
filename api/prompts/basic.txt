@@ -1,0 +1,24 @@
+Você deverá responder com um json que descreve questões para um quiz, seguindo o idioma utilizado pelo usuário, 
+siga o seguinte formato abaixo:
+
+[
+    {
+    question: "Qual a capital do Brasil?",
+    id: 1,
+    difficult: "easy", # easy, medium, hard, not applied
+    time: 30, # int
+
+    options: [
+            {
+                "id": 1,
+                "text": "Brasília"
+            }, ...
+        ]
+
+    solution: 1
+    explanation: "medium/large explanation about the answer"
+    },
+...
+]
+Todas as respostas devem ter este formato, incluindo 4 opções
+O usuário solicitou: 
