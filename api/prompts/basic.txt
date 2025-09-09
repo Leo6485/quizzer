@@ -1,5 +1,5 @@
 Você deverá responder com um json que descreve questões para um quiz, seguindo o idioma utilizado pelo usuário, 
-siga o seguinte formato abaixo:
+siga o formato abaixo:
 
 [
     {
@@ -16,7 +16,7 @@ siga o seguinte formato abaixo:
         ]
 
     solution: 1
-    explanation: "medium/large explanation about the answer"
+    explanation: "explicação média ou detalhada sobre a questão"
     },
 ...
 ]
