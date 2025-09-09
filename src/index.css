@@ -12,6 +12,7 @@ body {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .root {
@@ -19,8 +20,7 @@ body {
   flex-direction: column;
   overflow-x: hidden;
   margin: 0;
-  background-color: #E0E0E0;
-  background: url("assets/background.png") no-repeat center center fixed;
+  background-color: #202020;
   width: 100dvw;
   height: 100dvh;
 }

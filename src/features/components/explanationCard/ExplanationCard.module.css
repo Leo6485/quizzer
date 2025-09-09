@@ -9,7 +9,7 @@
     justify-content: start;
     align-items: start;
     flex-direction: column;
-    background-color: #EEEEEE50;
+    background-color: #121212DD;
     backdrop-filter: blur(5px);
     box-shadow: 0px 0px 15px #00000050;
     padding: 10px;
@@ -17,7 +17,7 @@
     width: 80%;
     min-height: 100px;
     margin-bottom: 100px;
-    color: #505050;
+    color: #E0E0E0;
 }
 
 .explicationTitle {
@@ -27,7 +27,7 @@
 }
 
 .explanationText {
-    background-color: #FFFFFFDD;
+    background-color: #101010DD;
     width: 100%;
     margin: 10px 0 0 0;
     padding: 15px;

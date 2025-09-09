@@ -14,12 +14,31 @@
     align-items: center;
     padding: 25px;
     margin: 20px auto;
-    background-color: #484CBD;
+    background-color: #121212;
     border-radius: 25px;
     color: #F0F0F0;
     font-size: 1.2rem;
 }
 
+
+@media (max-width: 600px) {
+    
+.question {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    margin: 0 auto 20px auto;
+    background-color: #121212;
+    border-radius: 0;
+    color: #F0F0F0;
+    font-size: 1.2rem;
+}
+}
 line {
     width: 80%;
     height: 1px;
@@ -47,7 +66,7 @@ line {
 
 .option {
     width: 100%;
-    background-color: #E0E0E0;
+    background-color: #121212;
     padding: 10px 25px;
     border-radius: 5px;
     text-decoration: none;
@@ -55,6 +74,7 @@ line {
     border: 1px solid #00000000;
     transition: 0.1s all ease-in-out;
     font-size: 1.0rem;
+    color: #E0E0E0;
 }
 
 

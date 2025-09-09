@@ -18,10 +18,9 @@
     align-items: center;
     flex-direction: column;
     padding: 0 20px;
-    background-color: #F0F0F050;
+    background-color: #121212;
     backdrop-filter: blur(5px);
     border-radius: 25px;
-    border: 1px solid #A0A0A0;
 }
 
 .inputChat {
@@ -30,7 +29,7 @@
     background-color: #00000000;
     height: 50px;
     width: 100%;
-    color: #505050;
+    color: #E0E0E0;
     padding: 0;
 }
 
@@ -45,11 +44,49 @@
     backdrop-filter: blur(5px);
     border: 1px solid #FFFFFFA0;
     border-radius: 20px;
-    background-color: #A0A0A0A0;
+    background-color: #101012;
     cursor: pointer;
 }
 
 .sendButton:hover {
     background-color: #FFFFFFC0;
     color: #505050;
+}
+
+.vContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.fileInput {
+    display: none;
+}
+
+.fileLabel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    color: #FFFFFF;
+    transition: 0.2s ease;
+}
+
+.fileLabel:hover {
+    color: #D0D0D0;
+    transform: scale(1.2);
+}
+
+.fileName {
+    color: #D0D0D0;
+    margin-left: 8px;
+    font-size: 0.9rem;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

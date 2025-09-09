@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: center;
     gap: 5px;
-    background-color: #202020;
+    background-color: #101010;
 }
 
 .title {
@@ -18,15 +18,16 @@
 
 .progressBarContainer {
     width: 100%;
-    height: 100%;
+    height: 5px;
     margin: auto 0 0 0;
     padding: 0;
-    background-color: #F0F0F0;
+    background-color: #101010;
 }
 
 .progressBar {
     height: 100%;
     border-radius: 0 5px 5px 0;
     background-color: #484CBD;
+    background: linear-gradient(120deg, #7128e6 0%, #8512ac 100%);
     transition: 0.5s all ease-in-out;
 }

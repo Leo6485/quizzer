@@ -9,7 +9,7 @@
     height: 100dvh;
     overflow-y: scroll;
     overflow-x: hidden;
-    background-color: #F0F0F0;
+    background-color: #202020;
     color: #202020;
     z-index: 100px;
 }
@@ -30,10 +30,12 @@
 
 .confirmButton, .restartButton {
     flex: 1;
+    min-width: 50%;
     margin: auto;
     color: #FFFFFF;
     border: none;
-    background-color: #2050F0;
+    background-color: #651e65;
+    background: linear-gradient(120deg, #7e43e4 0%, #8518b1 100%);
 }
 
 .confirmButton:disabled {
@@ -46,9 +48,11 @@
 }
 .explainThis {
     margin: auto 20px;
-    width: 150px;
-    color: #2050F0;
-    border: 2px solid #2050F0;
+    width: 120px;
+    aspect-ratio: 1;
+    color: #7e43e4;
+    border-radius: 100px;
+    border: 2px solid #7e43e4;
     background-color: #00000000;
 }
 
@@ -66,7 +70,7 @@
     transform: scale(1.02);
     color: #FFFFFF;
     border: none;
-    background-color: #3d64e6;
+    background: linear-gradient(120deg, #7e43e4 0%, #8518b1 100%);
 }
 
 .endScreen {
@@ -80,10 +84,10 @@
 
 .endTitle {
     font-size: 2.0rem;
-    color: #505050;
+    color: #E0E0E0;
 }
 
 .endText {
     font-size: 1.2rem;
-    color: #505050;
+    color: #E0E0E0;
 }

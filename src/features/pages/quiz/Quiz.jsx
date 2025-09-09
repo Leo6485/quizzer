@@ -1,7 +1,7 @@
 import styles from "./Quiz.module.css"
 import Header from "../../components/header/Header"
 import ExplanationCard from "../../components/explanationCard/ExplanationCard";
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import Question from "../../components/question/Question";
 
 
@@ -39,13 +39,17 @@ function Quiz({ questions, setIdx, idx, lastIdx }) {
         <div className={styles.questionCard}>
             <Header idx={idx + isEnd} lastIdx={lastIdx}></Header>
             {isEnd ?
+                // End screen
                 <div className={styles.endScreen}>
                     <h2 className={styles.endTitle}>Parabéns!</h2>
                     <p className={styles.endText}>Você concluiu o quiz.</p>
                     <p className={styles.endText}>Acertos: {acertos}/{questions.length}</p>
                     <button className={styles.restartButton} onClick={() => window.location.reload()}>Reiniciar Quiz</button>
                 </div>
-            :<>
+
+            :
+            
+            <>
             <Question question={question} setSelection={setSelection} selection={selection} confirmed={confirmed}></Question>
 
 

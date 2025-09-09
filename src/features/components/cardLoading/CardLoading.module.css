@@ -7,17 +7,15 @@
     width: 400px;
     max-width: 90%;
     aspect-ratio: 5/8;
-    background-color: #FFFFFF50;
-    backdrop-filter: blur(5px);
-    border: 1px solid #DDDDDD;
+    background-color: #121212;
     border-radius: 25px;
-    margin: 100px auto;
+    margin: 50px auto;
     padding: 25px;
 }
 
 .cardTitle {
     font-size: 1.5rem;
-    color: #505050;
+    color: #E0E0E0;
 }
 
 

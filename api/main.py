@@ -1,12 +1,9 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
-import uvicorn
-import os
-
-from random import shuffle
-from gemini import send_with_history, gen_quiz
+import uvicorn, os
+from gemini import gen_quiz, gen_quiz_file
 
 app = FastAPI()
 app.add_middleware(
@@ -27,6 +24,12 @@ async def serve_react():
 @app.get("/api/quiz")
 def get_quiz(msg: str):
     quiz = gen_quiz(msg)
+    return quiz
+
+@app.post("/api/quiz_file")
+def get_quiz_file(file: UploadFile = File(...), msg: str = ""):
+    content = file.file.read()
+    quiz = gen_quiz_file(file, msg, content)
     return quiz
 
 @app.get("/api/quiz_")

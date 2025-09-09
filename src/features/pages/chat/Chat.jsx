@@ -2,7 +2,8 @@ import ChatBar from "../../components/chatBar/ChatBar"
 import CardLoading from "../../components/cardLoading/CardLoading"
 import Header from "../../components/header/Header"
 
-function Chat({generatingQuiz, send}) {
+function Chat({generatingQuiz, send, setFile}) {
+
     return (
             <>
             <Header idx={0} lastIdx={0}></Header>
@@ -10,7 +11,7 @@ function Chat({generatingQuiz, send}) {
             <CardLoading msg="Seu quiz está sendo gerado"/>
             }
 
-            <ChatBar send={send}/>
+            <ChatBar send={send} setFile={setFile}/>
             </>
     )
 }
