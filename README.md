@@ -1,7 +1,7 @@
 Geração de quizzes interativa por meio da API do Gemini
 
 ### URL
-https://quizzer-06ac.onrender.com/
+https://quizzer-vgs9.onrender.com/
 
 ## Requisitos
 
