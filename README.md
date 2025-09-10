@@ -1,8 +1,5 @@
 Geração de quizzes interativa por meio da API do Gemini
 
-### URL
-https://quizzer-vgs9.onrender.com/
-
 ## Requisitos
 
 - Node.js (>= 18)
