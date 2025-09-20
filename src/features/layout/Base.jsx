@@ -10,6 +10,7 @@ function Base() {
     const [generatingQuiz, setGeneratingQuiz] = useState(false)
     const [file, setFile] = useState(null)
     const [error429, setError429] = useState(false)
+    const api_url = process.env.REACT_APP_API_URL
 
     function get_quiz(msg) {
         setError429(false)
@@ -20,7 +21,7 @@ function Base() {
             const formData = new FormData();
             formData.append('file', file);
             formData.append('msg', msg);
-            fetch(`/api/gen_quiz_file`, {
+            fetch(`${api_url}/api/gen_quiz_file`, {
                 method: 'POST',
                 body: formData,
             })
@@ -44,7 +45,7 @@ function Base() {
             return;
         }
 
-        fetch(`/api/gen_quiz?msg=${msg}`)
+        fetch(`${api_url}/api/gen_quiz?msg=${msg}`)
         .then((response) => {
                 if (response.status === 429) {
                     setGeneratingQuiz(false)
