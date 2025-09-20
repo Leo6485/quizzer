@@ -8,6 +8,36 @@ URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:
 load_dotenv("../.env")
 API_KEY = getenv("GEMINI_API")
 
+generationConfig = {
+            "response_mime_type": "application/json",
+            "response_schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "question": {"type": "string"},
+                        "id": {"type": "integer"},
+                        "difficulty": {"type": "string"},
+                        "time": {"type": "integer"},
+                        "options": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {"type": "integer"},
+                                    "text": {"type": "string"}
+                                },
+                                "required": ["id", "text"]
+                            }
+                        },
+                        "solution": {"type": "integer"},
+                        "explanation": {"type": "string"}
+                    },
+                    "required": ["question", "id", "options", "solution", "explanation"]
+                }
+            }
+        }
+
 def send_with_history(prompt, history):
     history.append({"role": "user", "parts": [{"text": prompt}]})
     data = {"contents": history}
@@ -27,6 +57,16 @@ def send_with_history(prompt, history):
     except Exception as e:
         return f"Erro na resposta: {json.dumps(resp_json, indent=2, ensure_ascii=False)}"
 
+def parse_response(response):
+    resp_json = response.json()
+
+    text = resp_json["candidates"][0]["content"]["parts"][0]["text"]
+    json_ = json.loads(text)
+    for q in json_:
+        shuffle(q["options"])
+    
+    return json_
+
 def gen_quiz(msg):
     global prompt
     headers = {"Content-Type": "application/json"}
@@ -34,50 +74,15 @@ def gen_quiz(msg):
         "contents": [
             {"role": "user", "parts": [{"text": prompt + msg}]}
         ],
-        "generationConfig": {
-            "response_mime_type": "application/json",
-            "response_schema": {
-                "type": "array",
-                "items": {
-                    "type": "object",
-                    "properties": {
-                        "question": {"type": "string"},
-                        "id": {"type": "integer"},
-                        "difficulty": {"type": "string"},
-                        "time": {"type": "integer"},
-                        "options": {
-                            "type": "array",
-                            "items": {
-                                "type": "object",
-                                "properties": {
-                                    "id": {"type": "integer"},
-                                    "text": {"type": "string"}
-                                },
-                                "required": ["id", "text"]
-                            }
-                        },
-                        "solution": {"type": "integer"},
-                        "explanation": {"type": "string"}
-                    },
-                    "required": ["question", "id", "options", "solution", "explanation"]
-                }
-            }
-        }
+        "generationConfig": generationConfig
     }
 
     response = requests.post(URL, params={"key": API_KEY}, headers=headers, json=data)
-    resp_json = response.json()
-
+    
     try:
-        text = resp_json["candidates"][0]["content"]["parts"][0]["text"]
-        json_ = json.loads(text)
-        for q in json_:
-            shuffle(q["options"])
-        
-        return json_
-
+        return parse_response(response)
     except Exception as e:
-        return {"error": str(e), "raw": resp_json}
+        return {"error": str(e), "raw": response.json()}
 
 def gen_quiz_file(file: UploadFile, msg="", content=None):
     global prompt
@@ -88,58 +93,18 @@ def gen_quiz_file(file: UploadFile, msg="", content=None):
     data = {
         "contents": [
             {"role": "user", "parts": [{"text": prompt + msg}]},
-            {
-                "role": "user",
-                "parts": [{
-                    "inline_data": {
-                        "mime_type": file.content_type,
-                        "data": file_b64
-                    }
-                }]
-            }
+            {"role": "user", "parts": [{ "inline_data": {"mime_type": file.content_type, "data": file_b64}}]}
         ],
-        "generationConfig": {
-            "response_mime_type": "application/json",
-            "response_schema": {
-                "type": "array",
-                "items": {
-                    "type": "object",
-                    "properties": {
-                        "question": {"type": "string"},
-                        "id": {"type": "integer"},
-                        "difficulty": {"type": "string"},
-                        "time": {"type": "integer"},
-                        "options": {
-                            "type": "array",
-                            "items": {
-                                "type": "object",
-                                "properties": {
-                                    "id": {"type": "integer"},
-                                    "text": {"type": "string"}
-                                },
-                                "required": ["id", "text"]
-                            }
-                        },
-                        "solution": {"type": "integer"},
-                        "explanation": {"type": "string"}
-                    },
-                    "required": ["question", "id", "options", "solution", "explanation"]
-                }
-            }
-        }
+        "generationConfig": generationConfig
     }
 
     response = requests.post(URL, params={"key": API_KEY}, headers=headers, json=data)
-    resp_json = response.json()
-
     try:
-        text = resp_json["candidates"][0]["content"]["parts"][0]["text"]
-        json_ = json.loads(text)
-        for q in json_:
-            shuffle(q["options"])
-        return json_
+        return parse_response(response)
     except Exception as e:
-        return {"error": str(e), "raw": resp_json}
+        return {"error": str(e), "raw": response.json()}
+
+
 
 with open("prompts/basic.txt", "r", encoding="utf-8") as f:
     prompt = f.read()

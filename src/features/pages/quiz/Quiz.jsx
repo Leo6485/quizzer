@@ -1,6 +1,6 @@
 import styles from "./Quiz.module.css"
 import Header from "../../components/header/Header"
-import ExplanationCard from "../../components/explanationCard/ExplanationCard";
+import InfoCard from "../../components/infoCard/InfoCard";
 import { useEffect, useState } from "react"
 import Question from "../../components/question/Question";
 
@@ -83,7 +83,7 @@ function Quiz({ questions, setIdx, idx, lastIdx }) {
             
             {
                 explainState &&
-                <ExplanationCard explanation={question.explanation}></ExplanationCard>
+                <InfoCard title="Explicação" text={question.explanation}></InfoCard>
             }
             </>
         }

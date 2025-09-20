@@ -1,6 +1,6 @@
 
 
-.explanationCard {
+.infoCard {
     position: fixed;
     bottom: 50%;
     left: 50%;
@@ -20,13 +20,13 @@
     color: #E0E0E0;
 }
 
-.explicationTitle {
+.infoTitle {
     font-size: 1.2rem;
     font-weight: bold;
     margin-bottom: 10px;
 }
 
-.explanationText {
+.infoText {
     background-color: #101010DD;
     width: 100%;
     margin: 10px 0 0 0;
