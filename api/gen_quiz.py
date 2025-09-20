@@ -21,7 +21,7 @@ def handler(request):
 
     rate_limits[ip].append(now)
 
-    msg = request.query.get("msg", "")
+    msg = request.args.get("msg", "")
     quiz = gen_quiz(msg)
 
     return {

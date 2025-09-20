@@ -1,0 +1,10 @@
+{
+  "functions": {
+    "api/gen_quiz.py": {
+      "runtime": "vercel-python@0.6.0"
+    },
+    "api/gen_quiz_file.py": {
+      "runtime": "vercel-python@0.6.0"
+    }
+  }
+}
