@@ -1,5 +1,6 @@
 Geração de quizzes interativa por meio da API do Gemini
 
+ - URL: `https://quizzer-pi-one.vercel.app/`
 ## Requisitos
 
 - Node.js (>= 18)
