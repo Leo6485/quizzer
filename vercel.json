@@ -1,6 +1,6 @@
 {
   "functions": {
-    "api/gen_quiz.py": { "runtime": "python3.11" },
-    "api/gen_quiz_file.py": { "runtime": "python3.11" }
+    "api/gen_quiz.py": { "runtime": "vercel@python" },
+    "api/gen_quiz_file.py": { "runtime": "vercel@python" }
   }
 }
