@@ -1,6 +1,9 @@
 {
-  "functions": {
-    "api/gen_quiz.py": { "runtime": "vercel@python" },
-    "api/gen_quiz_file.py": { "runtime": "vercel@python" }
-  }
+  "version": 2,
+  "builds": [
+    { "src": "api/**/*.py", "use": "@vercel/python" }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/$1.py" }
+  ]
 }
