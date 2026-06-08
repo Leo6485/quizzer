@@ -4,7 +4,7 @@ from os import getenv
 from dotenv import load_dotenv
 from fastapi import UploadFile
 
-URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent"
+URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
 load_dotenv("../.env")
 API_KEY = getenv("GEMINI_API")
 
