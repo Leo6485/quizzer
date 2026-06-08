@@ -11,6 +11,9 @@ from slowapi.errors import RateLimitExceeded
 from gemini import gen_quiz, gen_quiz_file
 
 app = FastAPI()
+
+
+from fastapi.middleware.cors import CORSMiddleware
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -24,9 +27,10 @@ app.mount("/static", StaticFiles(directory="../build/static"), name="static")
 
 
 limiter = Limiter(key_func=get_remote_address)
+app.state.limiter = limiter
 
 @app.exception_handler(RateLimitExceeded)
-async def rate_limit_exceded(request: Request, exc: RateLimitExceeded):
+async def rate_limit_exceeded(request: Request, exc: RateLimitExceeded):
     return JSONResponse( status_code=429, content={"error": "Too many requests"})
 
 @app.get("/")
