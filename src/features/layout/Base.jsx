@@ -10,7 +10,7 @@ function Base() {
     const [generatingQuiz, setGeneratingQuiz] = useState(false)
     const [file, setFile] = useState(null)
     const [error429, setError429] = useState(false)
-    const api_url = process.env.REACT_APP_API_URL
+    const api_url = import.meta.env.VITE_API_URL
 
     function get_quiz(msg) {
         setError429(false)

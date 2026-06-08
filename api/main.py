@@ -23,7 +23,7 @@ app.add_middleware(
 )
 
 
-app.mount("/static", StaticFiles(directory="../build/static"), name="static")
+app.mount("/assets", StaticFiles(directory="../dist/assets"), name="assets")
 
 
 limiter = Limiter(key_func=get_remote_address)
@@ -35,7 +35,7 @@ async def rate_limit_exceeded(request: Request, exc: RateLimitExceeded):
 
 @app.get("/")
 async def serve_react():
-    return FileResponse(os.path.join("../build", "index.html"))
+    return FileResponse(os.path.join("../dist", "index.html"))
 
 @app.get("/api/gen_quiz")
 @limiter.limit("10/hour")

@@ -24,7 +24,7 @@ Geração de quizzes interativa por meio da API do Gemini
     npm install
     ```
 
-3. Gere o build:
+3. Gere o build de produção:
     ```sh
     npm run build
     ```
@@ -55,19 +55,3 @@ Geração de quizzes interativa por meio da API do Gemini
 ## Uso
 
 - Acesse `http://localhost:8000`
-
-## Estrutura do Projeto
-
-```
-quizzer/
-├── api/
-│   ├── main.py
-│   └── requirements.txt
-│   └── ...
-├── public/
-├── src/
-│   ├── App.js
-│   └── ...
-├── package.json
-└── README.md
-```
